@@ -1,5 +1,4 @@
 def collatz(number):
-    # integer_number = int(number)
     if number % 2 == 0:
         current_number = number // 2
         print(current_number)
