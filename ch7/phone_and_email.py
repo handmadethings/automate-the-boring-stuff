@@ -15,6 +15,7 @@ phone_regex = re.compile(r'''(
 
 # TODO: Create email regex
 
+
 # TODO: Find matches in clipboard text.
 
 # TODO: Copy results to the clipboard.
