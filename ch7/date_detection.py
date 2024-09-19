@@ -4,11 +4,6 @@
 
 import re, calendar
 
-date_regex = re.compile(r'([0-3]\d)/([01]\d)/([1-2]\d{3})')
-
-test_string_one = '31/06/299'
-test_string_two = '31/02/1984'
-
 def date_detection(date_string):
     date_regex = re.compile(r'([0-3]\d)/([01]\d)/([1-2]\d{3})')
     groups = date_regex.findall(date_string)
@@ -39,6 +34,3 @@ def date_detection(date_string):
     else:
         print('Valid date')
         return 'Valid date'
-
-date_detection(test_string_one)
-date_detection(test_string_two)
