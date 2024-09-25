@@ -24,14 +24,14 @@
 #### Correct Path
 On Windows, paths are written using backslashes (\) as the separator between folder names. The macOS and Linux operating systems, however, use the forward slash (/). If you want your programs to work on all operating systems, use the Path() function in the pathlib module. If you pass it the string values of individual file and folder names in your path, Path() will return a string with a file path using the correct path separators:
 
-`
+<code>
 from pathlib import Path
 Path('spam', 'bacon', 'eggs')
 
 WindowsPath('spam/bacon/eggs')
 str(Path('spam', 'bacon', 'eggs'))
 'spam\\bacon\\eggs'
-`
+</code>
 
 Note that the convention for importing pathlib is to run *from pathlib import Path*
 
