@@ -34,8 +34,7 @@ The / operator that we normally use for division can also combine Path objects a
 
 For example, enter the following into the interactive shell:
 
-<code>
-> from pathlib import Path
+<code>> from pathlib import Path
 > Path('spam') / 'bacon' / 'eggs'
 WindowsPath('spam/bacon/eggs')
 > Path('spam') / Path('bacon/eggs')
