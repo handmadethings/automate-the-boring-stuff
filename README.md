@@ -29,6 +29,23 @@ Path('spam', 'bacon', 'eggs')</code>
 
 Note that the convention for importing pathlib is to run *from pathlib import Path*
 
+#### Using the / Operator to Join Paths
+The / operator that we normally use for division can also combine Path objects and strings. This is helpful for modifying a Path object after you’ve already created it with the Path() function.
+
+For example, enter the following into the interactive shell:
+
+<code>
+> from pathlib import Path
+> Path('spam') / 'bacon' / 'eggs'
+WindowsPath('spam/bacon/eggs')
+
+> Path('spam') / Path('bacon/eggs')
+WindowsPath('spam/bacon/eggs')
+
+> Path('spam') / Path('bacon', 'eggs')
+WindowsPath('spam/bacon/eggs')</code>
+
+
 ### Chapter 10 – Organizing Files
 
 ### Chapter 11 – Debugging
