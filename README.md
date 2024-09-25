@@ -38,13 +38,10 @@ For example, enter the following into the interactive shell:
 > from pathlib import Path
 > Path('spam') / 'bacon' / 'eggs'
 WindowsPath('spam/bacon/eggs')
-
 > Path('spam') / Path('bacon/eggs')
 WindowsPath('spam/bacon/eggs')
-
 > Path('spam') / Path('bacon', 'eggs')
 WindowsPath('spam/bacon/eggs')</code>
-
 
 ### Chapter 10 – Organizing Files
 
