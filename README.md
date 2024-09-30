@@ -43,6 +43,26 @@ WindowsPath('spam/bacon/eggs')
 > Path('spam') / Path('bacon', 'eggs')
 WindowsPath('spam/bacon/eggs')</code>
 
+#### The Current Working Directory
+You can get the current working directory as a string value with the *Path.cwd()* function and change it using *os.chdir()*:
+
+<code>>from pathlib import Path
+> import os
+> Path.cwd()
+WindowsPath('C:/Users/Al/AppData/Local/Programs/Python/Python37')'
+>os.chdir('C:\\Windows\\System32')
+>Path.cwd()
+WindowsPath('C:/Windows/System32')</code>
+
+#### The Home Directory
+All users have a folder for their own files on the computer called the home directory or home folder. You can get a Path object of the home folder by calling Path.home():
+
+<code>Path.home()
+WindowsPath('C:/Users/Al')</code>
+
+Your scripts will almost certainly have permissions to read and write the files under your home directory, so it’s an ideal place to put the files that your Python programs will work with.
+There are also the dot (.) and dot-dot (..) folders. These are not real folders but special names that can be used in a path. A single period (“dot”) for a folder name is shorthand for “this directory.” Two periods (“dot-dot”) means “the parent folder.”
+
 ### Chapter 10 – Organizing Files
 
 ### Chapter 11 – Debugging
