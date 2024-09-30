@@ -24,8 +24,11 @@
 #### Correct Path
 On Windows, paths are written using backslashes (\) as the separator between folder names. The macOS and Linux operating systems, however, use the forward slash (/). If you want your programs to work on all operating systems, use the Path() function in the pathlib module. If you pass it the string values of individual file and folder names in your path, Path() will return a string with a file path using the correct path separators:
 
-<code>from pathlib import Path
-Path('spam', 'bacon', 'eggs')</code>
+<code>\>\>\> from pathlib import Path
+\>\>\>Path('spam', 'bacon', 'eggs')
+WindowsPath('spam/bacon/eggs')
+\>\>\> str(Path('spam', 'bacon', 'eggs'))
+'spam\\bacon\\eggs'</code>
 
 Note that the convention for importing pathlib is to run *from pathlib import Path*
 
@@ -34,24 +37,23 @@ The / operator that we normally use for division can also combine Path objects a
 
 For example, enter the following into the interactive shell:
 
-<code>
-> from pathlib import Path
-> Path('spam') / 'bacon' / 'eggs'
+<code>\>\>\> from pathlib import Path
+\>\>\> Path('spam') / 'bacon' / 'eggs'
 WindowsPath('spam/bacon/eggs')
-> Path('spam') / Path('bacon/eggs')
+\>\>\> Path('spam') / Path('bacon/eggs')
 WindowsPath('spam/bacon/eggs')
-> Path('spam') / Path('bacon', 'eggs')
+\>\>\> Path('spam') / Path('bacon', 'eggs')
 WindowsPath('spam/bacon/eggs')</code>
 
 #### The Current Working Directory
 You can get the current working directory as a string value with the *Path.cwd()* function and change it using *os.chdir()*:
 
-<code>\>from pathlib import Path
-\> import os
-\> Path.cwd()
+<code>\>\>\> from pathlib import Path
+\>\>\> import os
+\>\>\> Path.cwd()
 WindowsPath('C:/Users/Al/AppData/Local/Programs/Python/Python37')'
-\>os.chdir('C:\\Windows\\System32')
-\>Path.cwd()
+\>\>\> os.chdir('C:\\Windows\\System32')
+\>\>\> Path.cwd()
 WindowsPath('C:/Windows/System32')</code>
 
 #### The Home Directory
