@@ -59,7 +59,7 @@ WindowsPath('C:/Windows/System32')</code>
 #### The Home Directory
 All users have a folder for their own files on the computer called the home directory or home folder. You can get a Path object of the home folder by calling Path.home():
 
-<code>Path.home()
+<code>\>\>\> Path.home()
 WindowsPath('C:/Users/Al')</code>
 
 Your scripts will almost certainly have permissions to read and write the files under your home directory, so it’s an ideal place to put the files that your Python programs will work with.
