@@ -46,12 +46,12 @@ WindowsPath('spam/bacon/eggs')</code>
 #### The Current Working Directory
 You can get the current working directory as a string value with the *Path.cwd()* function and change it using *os.chdir()*:
 
-<code>>from pathlib import Path
-> import os
-> Path.cwd()
+<code>\>from pathlib import Path
+\> import os
+\> Path.cwd()
 WindowsPath('C:/Users/Al/AppData/Local/Programs/Python/Python37')'
->os.chdir('C:\\Windows\\System32')
->Path.cwd()
+\>os.chdir('C:\\Windows\\System32')
+\>Path.cwd()
 WindowsPath('C:/Windows/System32')</code>
 
 #### The Home Directory
