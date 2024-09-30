@@ -56,6 +56,8 @@ WindowsPath('C:/Users/Al/AppData/Local/Programs/Python/Python37')'
 \>\>\> Path.cwd()
 WindowsPath('C:/Windows/System32')</code>
 
+The *os.getcwd()* function is the older way of getting the current working directory as a string.
+
 #### The Home Directory
 All users have a folder for their own files on the computer called the home directory or home folder. You can get a Path object of the home folder by calling Path.home():
 
@@ -64,6 +66,98 @@ WindowsPath('C:/Users/Al')</code>
 
 Your scripts will almost certainly have permissions to read and write the files under your home directory, so it’s an ideal place to put the files that your Python programs will work with.
 There are also the dot (.) and dot-dot (..) folders. These are not real folders but special names that can be used in a path. A single period (“dot”) for a folder name is shorthand for “this directory.” Two periods (“dot-dot”) means “the parent folder.”
+
+#### Absolute vs. Relative Paths
+There are two ways to specify a file path:
+
+* An absolute path, which always begins with the root folder
+* A relative path, which is relative to the program’s current working directory
+
+There are also the dot (.) and dot-dot (..) folders. These are not real folders but special names that can be used in a path. A single period (“dot”) for a folder name is shorthand for “this directory.” Two periods (“dot-dot”) means “the parent folder.”
+
+#### Creating New Folders Using the os.makedirs() Function
+Your programs can create new folders (directories) with the *os.makedirs()* function:
+
+<code>\>\>\> import os
+\>\>\> os.makedirs('C:\\delicious\\walnut\\waffles')</code>
+
+To make a directory from a Path object, call the mkdir() method. For example, this code will create a spam folder under the home folder on my computer:
+
+<code>\>\>\> from pathlib import Path
+\>\>\> Path(r'C:\Users\Al\spam').mkdir()</code>
+
+#### Getting the Parts of a File Path
+Given a Path object, you can extract the file path’s different parts as strings using several Path object attributes. These can be useful for constructing new file paths based on existing ones.
+
+<code>\>\>\> p = Path('C:/Users/Al/spam.txt')
+\>\>\> p.anchor
+'C:\\'
+\>\>\> p.parent # This is a Path object, not a string.
+WindowsPath('C:/Users/Al')
+\>\>\> p.name
+'spam.txt'
+\>\>\> p.stem
+'spam'
+\>\>\> p.suffix
+'.txt'
+\>\>\> p.drive
+'C:'</code>
+
+These attributes evaluate to simple string values, except for parent, which evaluates to another Path object.
+
+If you need a path’s dir name and base name together, you can just call os.path.split() to get a tuple value with these two strings, like so:
+
+<code>\>\>\> calcFilePath = 'C:\\Windows\\System32\\calc.exe'
+\>\>\> os.path.split(calcFilePath)
+('C:\\Windows\\System32', 'calc.exe')</code>
+
+#### Checking Path Validity
+Many Python functions will crash with an error if you supply them with a path that does not exist. Luckily, Path objects have methods to check whether a given path exists and whether it is a file or folder. Assuming that a variable p holds a Path object, you could expect the following:
+
+* Calling *p.exists()* returns True if the path exists or returns False if it doesn’t exist.
+* Calling *p.is_file()* returns True if the path exists and is a file, or returns False otherwise.
+* Calling *p.is_dir()* returns True if the path exists and is a directory, or returns False otherwise.
+
+#### Opening and Reading Files
+To open a file with the open() function, you pass it a string path indicating the file you want to open; it can be either an absolute or relative path. The open() function returns a File object. 
+
+<code>\>\>\> helloFile = open(Path.home() / 'hello.txt')
+\>\>\> helloContent = helloFile.read()
+\>\>\> helloContent
+'Hello, world!'</code>
+
+Alternatively, you can use the readlines() method to get a list of string values from the file, one string for each line of text.
+
+<code>\>\>\> sonnetFile = open(Path.home() / 'sonnet29.txt')
+\>\>\> sonnetFile.readlines()</code>
+
+**Good practice:** Use the with statement to automatically call close() when the execution leaves the with statement’s block.
+
+<code>\>\>\> with open(Path.home() / 'hello.txt', 'w') as fileObj:
+...     fileObj.write('Hello, world!')</code>
+
+#### Writing to Files
+
+Python allows you to write content to a file in a way similar to how the print() function “writes” strings to the screen. Popen the file in write mode and append mode.
+
+Write mode will overwrite the existing file and start from scratch, just like when you overwrite a variable’s value with a new value. Pass 'w' as the second argument to open() to open the file in write mode. Append mode, on the other hand, will append text to the end of the existing file. You can think of this as appending to a list in a variable, rather than overwriting the variable altogether. Pass 'a' as the second argument to open() to open the file in append mode.
+
+<code>\>\>\> baconFile = open('bacon.txt', 'w')   
+\>\>\> baconFile.write('Hello, world!\n')
+13
+\>\>\> baconFile.close()
+\>\>\> baconFile = open('bacon.txt', 'a')
+\>\>\> baconFile.write('Bacon is not a vegetable.')
+25
+\>\>\> baconFile.close()
+\>\>\> baconFile = open('bacon.txt')
+\>\>\> content = baconFile.read()
+\>\>\> baconFile.close()
+\>\>\> print(content)
+Hello, world!
+Bacon is not a vegetable.</code>
+
+#### Saving Variables with the shelve Module
 
 ### Chapter 10 – Organizing Files
 
