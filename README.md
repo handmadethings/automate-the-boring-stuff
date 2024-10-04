@@ -158,6 +158,38 @@ Hello, world!
 Bacon is not a vegetable.</code>
 
 #### Saving Variables with the shelve Module
+You can save variables in your Python programs to binary shelf files using the shelve module. This way, your program can restore data to variables from the hard drive. The shelve module will let you add Save and Open features to your program. For example, if you ran a program and entered some configuration settings, you could save those settings to a shelf file and then have the program load them the next time it is run.
+
+Enter the following into the interactive shell:
+
+<code>\>\>\> import shelve
+\>\>\> shelfFile = shelve.open('mydata')
+\>\>\> cats = ['Zophie', 'Pooka', 'Simon']
+\>\>\> shelfFile['cats'] = cats
+\>\>\> shelfFile.close()</code>
+
+Your programs can use the shelve module to later reopen and retrieve the data from these shelf files. Shelf values don’t have to be opened in read or write mode—they can do both once opened. Enter the following into the interactive shell:
+
+<code>\>\>\> shelfFile = shelve.open('mydata')
+\>\>\> shelfFile['cats']
+['Zophie', 'Pooka', 'Simon']
+\>\>\> shelfFile.close()</code>
+
+#### Saving Variables with the pprint.pformat() Function
+Say you have a dictionary stored in a variable and you want to save this variable and its contents for future use. Using pprint.pformat() will give you a string that you can write to a .py file. This file will be your very own module that you can import whenever you want to use the variable stored in it.
+
+For example, enter the following into the interactive shell:
+
+<code>\>\>\> import pprint
+\>\>\> cats = [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
+\>\>\> pprint.pformat(cats)
+"[{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]"
+\>\>\> fileObj = open('myCats.py', 'w')
+\>\>\> fileObj.write('cats = ' + pprint.pformat(cats) + '\n')
+83
+\>\>\> fileObj.close()</code>
+
+The benefit of creating a .py file (as opposed to saving variables with the shelve module) is that because it is a text file, the contents of the file can be read and modified by anyone with a simple text editor. For most applications, however, saving data using the shelve module is the preferred way to save variables to a file.
 
 ### Chapter 10 – Organizing Files
 
