@@ -193,6 +193,26 @@ The benefit of creating a .py file (as opposed to saving variables with the shel
 
 ### Chapter 10 – Organizing Files
 
+#### The shutil Module
+The shutil (or shell utilities) module has functions to let you copy, move, rename, and delete files in your Python programs.
+
+Calling shutil.copy(source, destination) will copy the file at the path source to the folder at the path destination. (Both source and destination can be strings or Path objects.) If destination is a filename, it will be used as the new name of the copied file.
+
+Calling shutil.move(source, destination) will move the file or folder at the path source to the path destination and will return a string of the absolute path of the new location.
+
+#### Permanently Deleting Files and Folders
+You can delete a single file or a single empty folder with functions in the os module, whereas to delete a folder and all of its contents, you use the shutil module.
+
+* Calling os.unlink(path) will delete the file at path.
+* Calling os.rmdir(path) will delete the folder at path. This folder must be empty of any files or folders.
+* Calling shutil.rmtree(path) will remove the folder at path, and all files and folders it contains will also be deleted.
+
+#### Safe Deletes with the send2trash Module
+Since Python’s built-in shutil.rmtree() function irreversibly deletes files and folders, it can be dangerous to use. A much better way to delete files and folders is with the third-party send2trash module.
+
+#### Walking a Directory Tree
+Say you want to rename every file in some folder and also every file in every subfolder of that folder. That is, you want to walk through the directory tree, touching each file as you go. Python provides a function to handle this process for you, *the os.walk()* function.
+
 ### Chapter 11 – Debugging
 
 ### Chapter 12 – Web Scraping
