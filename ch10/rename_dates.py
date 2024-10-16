@@ -12,14 +12,30 @@ date_pattern = re.compile(r"""^(.*?)        # all text before the date
                           (.*?)$
                           """, re.VERBOSE)
 
-# TODO: Loop over the files in the working directory.
+# Loop over the files in the working directory.
+for american_filename in os.listdir('.'):
+    mo = date_pattern.search(american_filename)
 
-# TODO: Skip files without a date.
+    # Skip files without a date.
+    if mo == None:
+        continue
 
-# TODO: Get the different parts of the filename.
+    # Get the different parts of the filename.
+    before_part = mo.group(1)
+    month_part = mo.group(2)
+    day_part = mo.group(4)
+    year_part = mo.group(6)
+    after_part = mo.group(8)
 
-# TODO: Form the European-style filename.
+    # Form the European-style filename.
+    euro_filename = (before_part + day_part + '-' + month_part + '-' + 
+                     year_part + after_part)
 
-# TODO: Get the full, absolute file paths.
+    # Get the full, absolute file paths.
+    abs_working_dir = os.path.abspath('.')
+    american_filename = os.path.join(abs_working_dir, american_filename)
+    euro_filename = os.path.join(abs_working_dir, euro_filename)
 
-# TODO: Rename the files.
+    # Rename the files.
+    print(f'Renaming "{american_filename}" to "{euro_filename}"...')
+    # shutil.move(american_filename, euro_filename)    # Uncomment after testing
