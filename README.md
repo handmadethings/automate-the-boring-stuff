@@ -1,7 +1,7 @@
 "# automate-the-boring-stuff" 
 
 # Automate the Boring Stuff
-#### By Al Al Sweigart
+#### By Al Sweigart
 
 ### Chapter 1 - Python Basics
 
