@@ -215,6 +215,9 @@ Say you want to rename every file in some folder and also every file in every su
 
 ### Chapter 11 – Debugging
 
+#### Raising Exceptions
+Often it’s the code that calls the function, rather than the function itself, that knows how to handle an exception. That means you will commonly see a raise statement inside a function and the try and except statements in the code calling the function.
+
 ### Chapter 12 – Web Scraping
 
 ### Chapter 13 – Working with Excel Spreadsheets
