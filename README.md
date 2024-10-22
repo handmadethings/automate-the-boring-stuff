@@ -218,6 +218,32 @@ Say you want to rename every file in some folder and also every file in every su
 #### Raising Exceptions
 Often it’s the code that calls the function, rather than the function itself, that knows how to handle an exception. That means you will commonly see a raise statement inside a function and the try and except statements in the code calling the function.
 
+#### Assertions
+An assertion is a sanity check to make sure your code isn’t doing something obviously wrong. These sanity checks are performed by assert statements. If the sanity check fails, then an AssertionError exception is raised.
+Unlike exceptions, your code should not handle assert statements with try and except; if an assert fails, your program should crash. By “failing fast” like this, you shorten the time between the original cause of the bug and when you first notice the bug.
+
+Assertions are for programmer errors, not user errors. Assertions should only fail while the program is under development; a user should never see an assertion error in a finished program. For errors that your program can run into as a normal part of its operation (such as a file not being found or the user entering invalid data), raise an exception instead of detecting it with an assert statement.
+
+#### Logging
+To enable the logging module to display log messages on your screen as your program runs, copy the following to the top of your program:
+
+<code>import logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s -  %(levelname)s
+-  %(message)s')
+logging.debug('Start of program')
+
+def factorial(n):
+    logging.debug('Start of factorial(%s%%)'  % (n))
+    total = 1
+    for i in range(n + 1):
+        total *= i
+        logging.debug('i is ' + str(i) + ', total is ' + str(total))
+    logging.debug('End of factorial(%s%%)'  % (n))
+    return total
+
+print(factorial(5))
+logging.debug('End of program')</code>
+
 ### Chapter 12 – Web Scraping
 
 ### Chapter 13 – Working with Excel Spreadsheets
