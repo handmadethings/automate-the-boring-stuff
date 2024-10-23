@@ -1,6 +1,7 @@
 import random, logging
-
-
+logging.disable(logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG,
+    format='%(asctime)s -  %(levelname)s -  %(message)s')
 logging.debug('Start of program')
 guess = ''
 while guess not in ('heads', 'tails'):
@@ -8,13 +9,14 @@ while guess not in ('heads', 'tails'):
     guess = input()
     
 logging.debug(f'Guess is {guess}')
-toss = random.randint(0, 1) # 0 is tails, 1 is heads
+toss = random.choice(('heads', 'tails'))
 logging.debug(f'toss is {toss}')
 if toss == guess:
     print('You got it!')
 else:
     print('Nope! Guess again!')
-    guesss = input()
+    guess = input()
+    logging.debug(f'toss is {toss}, guess is {guess}')
     if toss == guess:
         print('You got it!')
     else:
