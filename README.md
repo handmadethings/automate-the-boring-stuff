@@ -231,6 +231,21 @@ To enable the logging module to display log messages on your screen as your prog
 logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)
 s -  %(message)s')</code>
 
+##### Don’t Debug with the print() Function
+You may want to use print() calls instead, but don’t give in to this temptation! The nice thing about log messages is that you’re free to fill your program with as many as you like, and you can always disable them later by adding a single logging.disable(logging.CRITICAL) call. Unlike print(), the logging module makes it easy to switch between showing and hiding log messages.
+
+##### Disabling Logging
+After you’ve debugged your program, you probably don’t want all these log messages cluttering the screen. The logging.disable() function disables these so that you don’t have to go into your program and remove all the logging calls by hand. You simply pass logging.disable() a logging level, and it will suppress all log messages at that level or lower. So if you want to disable logging entirely, just add logging.disable(logging.CRITICAL)
+
+Since logging.disable() will disable all messages after it, you will probably want to add it near the import logging line of code in your program. This way, you can easily find it to comment out or uncomment that call to enable or disable logging messages as needed.
+
+##### Logging to a File
+Instead of displaying the log messages to the screen, you can write them to a text file. The logging.basicConfig() function takes a filename keyword argument, like so:
+
+<code>import logging
+logging.basicConfig(filename='myProgramLog.txt', level=logging.DEBUG, format='
+%(asctime)s -  %(levelname)s -  %(message)s')</code>
+
 ### Chapter 12 – Web Scraping
 
 ### Chapter 13 – Working with Excel Spreadsheets
