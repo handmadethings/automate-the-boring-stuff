@@ -256,6 +256,9 @@ The [openpyxl](https://openpyxl.readthedocs.io/en/stable/) module allows your Py
 ### Chapter 15 – Working with PDF and Word Documents
 There are Python modules that make it easy for you to interact with PDFs and Word documents. Two such modules are [PyPDF2](https://pypdf2.readthedocs.io/en/3.x/) and [Python-Docx](https://python-docx.readthedocs.io/en/latest/).
 
+#### Creating PDF:s
+The PyPDF2 module doesn’t allow you to create PDF documents directly, but there’s a way to generate PDF files with Python if you’re on Windows and have Microsoft Word installed with the Pywin32 package. With this and the docx module, you can create Word documents and then convert them to PDFs.
+
 ### Chapter 16 – Working with CSV Files and JSON Data
 
 ### Chapter 17 – Keeping Time, Scheduling Tasks, and Launching Programs
