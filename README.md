@@ -249,10 +249,12 @@ logging.basicConfig(filename='myProgramLog.txt', level=logging.DEBUG, format='
 ### Chapter 12 – Web Scraping
 
 ### Chapter 13 – Working with Excel Spreadsheets
+The [openpyxl](https://openpyxl.readthedocs.io/en/stable/) module allows your Python programs to read and modify Excel (and LibreOffice Calc and OpenOffice Calc) spreadsheet files.
 
 ### Chapter 14 – Working with Google Spreadsheets
 
 ### Chapter 15 – Working with PDF and Word Documents
+There are Python modules that make it easy for you to interact with PDFs and Word documents. Two such modules are [PyPDF2](https://pypdf2.readthedocs.io/en/3.x/) and [Python-Docx](https://python-docx.readthedocs.io/en/latest/).
 
 ### Chapter 16 – Working with CSV Files and JSON Data
 
