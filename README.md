@@ -260,6 +260,38 @@ There are Python modules that make it easy for you to interact with PDFs and Wor
 The PyPDF2 module doesn’t allow you to create PDF documents directly, but there’s a way to generate PDF files with Python if you’re on Windows and have Microsoft Word installed with the Pywin32 package. With this and the docx module, you can create Word documents and then convert them to PDFs.
 
 ### Chapter 16 – Working with CSV Files and JSON Data
+#### Reading CSV Files
+To read data from a CSV file with the csv module, you need to create a reader object. A reader object lets you iterate over lines in the CSV file.
+
+<code>\>\>\> import csv
+\>\>\> exampleFile = open('example.csv')
+\>\>\> exampleReader = csv.reader(exampleFile)
+\>\>\> exampleData = list(exampleReader)
+\>\>\> exampleData</code>
+
+Now that you have the CSV file as a list of lists, you can access the value at a particular row and column with the expression <code>exampleData[row][col]</code>
+
+For large CSV files, you’ll want to use the reader object in a for loop:
+
+<code>\>\>\> for row in exampleReader:
+        print('Row #' + str(exampleReader.line_num) + ' ' + str(row))</code>
+
+#### Writing CSV Files
+A writer object lets you write data to a CSV file:
+
+<code>\>\>\> import csv
+\>\>\> outputFile = open('output.csv', 'w', newline='')
+\>\>\> outputWriter = csv.writer(outputFile)
+>>> outputWriter.writerow(['spam', 'eggs', 'bacon', 'ham'])</code>
+
+#### DictReader and DictWriter CSV Objects
+For CSV files that contain header rows, it’s often more convenient to work with the *DictReader* and *DictWriter* objects, rather than the *reader* and *writer* objects. These perform the same functions but use dictionaries instead, and they use the first row of the CSV file as the keys of these dictionaries.
+
+<code>\>\>\> import csv
+\>\>\> exampleFile = open('exampleWithHeader.csv')
+\>\>\> exampleDictReader = csv.DictReader(exampleFile)
+\>\>\> for row in exampleDictReader:
+...     print(row['Timestamp'], row['Fruit'], row['Quantity'])</code>
 
 ### Chapter 17 – Keeping Time, Scheduling Tasks, and Launching Programs
 
