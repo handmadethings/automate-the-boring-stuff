@@ -293,6 +293,14 @@ For CSV files that contain header rows, it’s often more convenient to work wit
 \>\>\> for row in exampleDictReader:
 ...     print(row['Timestamp'], row['Fruit'], row['Quantity'])</code>
 
+you can supply the *DictReader()* function with a second argument containing made-up header names in case the CSV doesn't have column headers:
+
+<code>\>\>\> import csv
+\>\>\> exampleFile = open('example.csv')
+\>\>\> exampleDictReader = csv.DictReader(exampleFile, ['time', 'name', 'amount'])
+\>\>\> for row in exampleDictReader:
+...     print(row['time'], row['name'], row['amount'])</code>
+
 ### Chapter 17 – Keeping Time, Scheduling Tasks, and Launching Programs
 
 ### Chapter 18 – Sending Email and Text Messages
