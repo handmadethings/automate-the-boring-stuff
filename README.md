@@ -282,7 +282,7 @@ A writer object lets you write data to a CSV file:
 <code>\>\>\> import csv
 \>\>\> outputFile = open('output.csv', 'w', newline='')
 \>\>\> outputWriter = csv.writer(outputFile)
->>> outputWriter.writerow(['spam', 'eggs', 'bacon', 'ham'])</code>
+\>\>\> outputWriter.writerow(['spam', 'eggs', 'bacon', 'ham'])</code>
 
 #### DictReader and DictWriter CSV Objects
 For CSV files that contain header rows, it’s often more convenient to work with the *DictReader* and *DictWriter* objects, rather than the *reader* and *writer* objects. These perform the same functions but use dictionaries instead, and they use the first row of the CSV file as the keys of these dictionaries.
