@@ -301,6 +301,22 @@ you can supply the *DictReader()* function with a second argument containing mad
 \>\>\> for row in exampleDictReader:
 ...     print(row['time'], row['name'], row['amount'])</code>
 
+#### Reading JSON with the loads() Function
+To translate a string containing JSON data into a Python value, pass it to the json.loads() function. (The name means “load string,” not “loads.”)
+
+<code>\>\>\> stringOfJsonData = '{"name": "Zophie", "isCat": true, "miceCaught": 0, "felineIQ": null}'
+\>\>\> import json
+\>\>\> jsonDataAsPythonValue = json.loads(stringOfJsonData)
+\>\>\> jsonDataAsPythonValue</code>
+
+#### Writing JSON with the dumps() Function
+The json.dumps() function (which means “dump string,” not “dumps”) will translate a Python value into a string of JSON-formatted data.
+
+<code>\>\>\> pythonValue = {'isCat': True, 'miceCaught': 0, 'name': 'Zophie',
+'felineIQ': None}
+\>\>\> import json
+\>\>\> stringOfJsonData = json.dumps(pythonValue)</code>
+
 ### Chapter 17 – Keeping Time, Scheduling Tasks, and Launching Programs
 
 ### Chapter 18 – Sending Email and Text Messages
