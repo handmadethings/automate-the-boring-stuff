@@ -6,6 +6,8 @@ from pathlib import Path
 
 pdf_files = []
 
+# TODO: Print Usage instead, explaining what the arguments should be
+# Then, get the path and joined filename with input instead
 if (args_count := len(sys.argv)) > 3:
     print(f"Two arguments expected, got {args_count - 1}")
     raise SystemExit(2)
@@ -14,6 +16,8 @@ elif args_count < 3:
     raise SystemExit(2)
 
 p = Path(sys.argv[1])
+
+# TODO: If doesn't end in ".pdf", add it to the end of the file name
 joined_file_path = p / sys.argv[2]
 
 for filename in os.listdir(p):
