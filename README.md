@@ -319,6 +319,33 @@ The json.dumps() function (which means “dump string,” not “dumps”) will 
 
 ### Chapter 17 – Keeping Time, Scheduling Tasks, and Launching Programs
 
+#### The time.time() and time.ctime() Functions
+The time.time() function returns the number of seconds since 12 AM on January 1, 1970, Coordinated Universal Time (UTC) as a float value.
+
+The return value from time.time() is useful, but not human-readable. The time.ctime() function returns a string description of the current time.
+
+#### The time.sleep() Function
+If you need to pause your program for a while, call the time.sleep() function and pass it the number of seconds you want your program to stay paused.
+
+#### Rounding Numbers
+To make float values easier to work with, you can shorten them with Python’s built-in round() function. Just pass in the number you want to round, plus an optional second argument representing how many digits after the decimal point you want to round it to.
+
+
+#### The datetime Module
+if you want to display a date in a more convenient format, or do arithmetic with dates (for example, figuring out what date was 205 days ago or what date is 123 days from now), you should use the datetime module.
+
+<code>\>\>\> import datetime
+>\>\>  datetime.datetime.now()
+datetime.datetime(2019, 2, 27, 11, 10, 49, 55, 53)
+>\>\>  dt = datetime.datetime(2019, 10, 21, 16, 29, 0)
+>\>\>  dt.year, dt.month, dt.day
+(2019, 10, 21)
+>\>\>  dt.hour, dt.minute, dt.second
+(16, 29, 0)</code>
+
+You can compare datetime objects with each other using comparison operators to find out which one precedes the other. The later datetime object is the “greater” value.
+
+
 ### Chapter 18 – Sending Email and Text Messages
 
 ### Chapter 19 – Manipulating Images
