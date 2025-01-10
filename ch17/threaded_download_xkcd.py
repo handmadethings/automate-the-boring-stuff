@@ -31,5 +31,18 @@ def download_xkcd(start_comic, end_comic):
                 image_file.write(chunk)
             image_file.close()
 
-# TODO: Create and start the Thread objects.
-# TODO: Wait for all threads to end.
+# Create and start the Thread objects.
+download_threads = []             # a list of all the Thread objects
+for i in range(0, 140, 10):    # loops 14 times, creates 14 threads
+    start = i
+    end = i + 9
+    if start == 0:
+        start = 1 # There is no comic 0, so set it to 1.
+    download_thread = threading.Thread(target=download_xkcd, args=(start, end))
+    download_threads.append(download_thread)
+    download_thread.start()
+
+# Wait for all threads to end.
+for download_thread in download_threads:
+    download_thread.join()
+print('Done.')
