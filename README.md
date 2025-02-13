@@ -368,7 +368,55 @@ long.\nDear Alice, so long and thanks for all the fish. Sincerely, Bob')
 </code>
 
 #### Connecting to an SMTP Server
+The domain name for the SMTP server will usually be the name of your email provider’s domain name, with smtp. in front of it.
 
+Once you have the domain name and port information for your email provider, create an SMTP object by calling smptlib.SMTP(), passing the domain name as a string argument, and passing the port as an integer argument. The SMTP object represents a connection to an SMTP mail server and has methods for sending emails. For example, the following call creates an SMTP object for connecting to an imaginary email server:
+
+<code>\>\>\> smtp_obj = smtplib.SMTP('smtp.example.com', 587)</code>
+
+Once you have the SMTP object, call its oddly named ehlo() method to “say hello” to the SMTP email server. This greeting is the first step in SMTP and is important for establishing a connection to the server.
+
+<code>\>\>\> smtpObj.ehlo()
+(250, b'mx.example.com at your service, [216.172.148.131]\nSIZE 35882577\
+n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nCHUNKING')</code>
+
+If the first item in the returned tuple is the integer 250 (the code for “success” in SMTP), then the greeting succeeded.
+
+If you are connecting to port 587 on the SMTP server (that is, you’re using TLS encryption), you’ll need to call the starttls() method next. This required step enables encryption for your connection. If you are connecting to port 465 (using SSL), then encryption is already set up, and you should skip this step.
+
+Here’s an example of the starttls() method call:
+
+<code>\>\>\> smtpObj.starttls()
+(220, b'2.0.0 Ready to start TLS')</code>
+
+Once your encrypted connection to the SMTP server is set up, you can log in with your username (usually your email address) and email password by calling the login() method.
+
+<code>\>\>\> smtpObj.login('my_email_address@example.com', 'MY_SECRET_PASSWORD')
+(235, b'2.7.0 Accepted')</code>
+
+Once you are logged in to your email provider’s SMTP server, you can call the sendmail() method to actually send the email. The sendmail() method call looks like this:
+
+<code>\>\>\> smtpObj.sendmail('my_email_address@example.com
+', 'recipient@example.com', 'Subject: So long.\nDear Alice, so long and thanks for all the fish.
+Sincerely, Bob')
+{}</code>
+
+The sendmail() method requires three arguments:
+
+* Your email address as a string (for the email’s “from” address)
+* The recipient’s email address as a string, or a list of strings for multiple recipients (for the “to” address)
+* The email body as a string
+T
+he start of the email body string must begin with 'Subject: \n' for the subject line of the email. The '\n' newline character separates the subject line from the main body of the email.
+
+The return value from sendmail() is a dictionary. There will be one key-value pair in the dictionary for each recipient for whom email delivery failed. An empty dictionary means all recipients were successfully sent the email.
+
+Be sure to call the quit() method when you are done sending emails. This will disconnect your program from the SMTP server.
+
+<code>\>\>\> smtpObj.quit()
+(221, b'2.0.0 closing connection ko10sm23097611pbd.52 - gsmtp')</code>
+
+The 221 in the return value means the session is ending.
 
 ### Chapter 19 – Manipulating Images
 
