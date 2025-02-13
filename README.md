@@ -348,6 +348,28 @@ You can compare datetime objects with each other using comparison operators to f
 
 ### Chapter 18 – Sending Email and Text Messages
 
+#### SMTP
+Much as HTTP is the protocol used by computers to send web pages across the internet, Simple Mail Transfer Protocol (SMTP) is the protocol used for sending email. A different protocol, called IMAP, deals with retrieving emails sent to you.
+
+#### Sending Email with SMTP
+<code>\>\>\> import smtplib
+\>\>\> smtpObj = smtplib.SMTP('smtp.example.com', 587)
+\>\>\> smtpObj.ehlo()
+(250, b'mx.example.com at your service, [216.172.148.131]\nSIZE 35882577\
+n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nCHUNKING')
+\>\>\> smtpObj.starttls()
+(220, b'2.0.0 Ready to start TLS')
+\>\>\> smtpObj.login('bob@example.com', 'MY_SECRET_PASSWORD')
+(235, b'2.7.0 Accepted')
+\>\>\> smtpObj.sendmail('bob@example.com', 'alice@example.com', 'Subject: So
+long.\nDear Alice, so long and thanks for all the fish. Sincerely, Bob')
+{}
+\>\>\> smtpObj.quit()
+</code>
+
+#### Connecting to an SMTP Server
+
+
 ### Chapter 19 – Manipulating Images
 
 ### Chapter 20 – Controlling the Keyboard and Mouse with GUI Automation
