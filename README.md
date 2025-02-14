@@ -419,5 +419,7 @@ Be sure to call the quit() method when you are done sending emails. This will di
 The 221 in the return value means the session is ending.
 
 ### Chapter 19 – Manipulating Images
+Pillow is a third-party Python module for interacting with image files. The module has several functions that make it easy to crop, resize, and edit the content of an image.
+
 
 ### Chapter 20 – Controlling the Keyboard and Mouse with GUI Automation
