@@ -17,6 +17,80 @@
 
 ### Chapter 7 - Pattern Matching with Regular Expressions
 
+#### Finding Patterns of Text with Regular Expressions
+Regular expressions, called regexes for short, are descriptions for a pattern of text. For example, a \d in a regex stands for a digit character—that is, any single numeral from 0 to 9.
+
+While there are several steps to using regular expressions in Python, each step is fairly simple.
+
+1. Import the regex module with import re.
+2. Create a Regex object with the re.compile() function. (Remember to use a raw string.)
+3. Pass the string you want to search into the Regex object’s search() method. This returns a Match object.
+4. Call the Match object’s group() method to return a string of the actual matched text.
+
+The search() method will return None if the regex pattern is not found in the string.
+
+<code>\>\>\>phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+\>\>\> mo = phoneNumRegex.search('My number is 415-555-4242.')
+\>\>\> print('Phone number found: ' + mo.group())</code>
+
+
+#### Grouping with Parentheses
+Say you want to separate the area code from the rest of the phone number. Adding parentheses will create groups in the regex: (\d\d\d)-(\d\d\d-\d\d\d\d). Then you can use the group() match object method to grab the matching text from just one group.
+
+The first set of parentheses in a regex string will be group 1. The second set will be group 2. By passing the integer 1 or 2 to the group() match object method, you can grab different parts of the matched text. Passing 0 or nothing to the group() method will return the entire matched text.
+
+<code>\>\>\> phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+\>\>\> mo = phoneNumRegex.search('My number is 415-555-4242.')
+\>\>\> mo.group(1)
+'415'
+\>\>\> mo.group(2)
+'555-4242'
+\>\>\> mo.group(0)
+'415-555-4242'
+\>\>\> mo.group()
+'415-555-4242'</code>
+
+If you would like to retrieve all the groups at once, use the groups() method—note the plural form for the name.
+
+<code>\>\>\> mo.groups()
+('415', '555-4242')
+\>\>\> areaCode, mainNumber = mo.groups()
+\>\>\> print(areaCode)
+415
+\>\>\> print(mainNumber)
+555-4242</code>
+
+In regular expressions, the following characters have special meanings:
+
+.  ^  $  *  +  ?  {  }  [  ]  \  |  (  )
+
+If you want to detect these characters as part of your text pattern, you need to escape them with a backslash:
+
+<code>\>\>\> phoneNumRegex = re.compile(r'(\(\d\d\d\)) (\d\d\d-\d\d\d\d)')
+\>\>\> mo = phoneNumRegex.search('My phone number is (415) 555-4242.')
+\>\>\> mo.group(1)
+'(415)'</code>
+
+#### Matching Multiple Groups with the Pipe
+The | character is called a pipe. You can use it anywhere you want to match one of many expressions. For example, the regular expression r'Batman|Tina Fey' will match either 'Batman' or 'Tina Fey'. When both Batman and Tina Fey occur in the searched string, the first occurrence of matching text will be returned as the Match object.
+
+<code>\>\>\> heroRegex = re.compile (r'Batman|Tina Fey')
+\>\>\> mo1 = heroRegex.search('Batman and Tina Fey')
+\>\>\> mo1.group()
+'Batman'</code>
+
+You can also use the pipe to match one of several patterns as part of your regex. For example, say you wanted to match any of the strings 'Batman', 'Batmobile', 'Batcopter', and 'Batbat'. Since all these strings start with Bat, it would be nice if you could specify that prefix only once. This can be done with parentheses:
+
+<code>\>\>\> batRegex = re.compile(r'Bat(man|mobile|copter|bat)')
+\>\>\> mo = batRegex.search('Batmobile lost a wheel')
+\>\>\> mo.group()
+'Batmobile'
+\>\>\> mo.group(1)
+'mobile'</code>
+
+#### Optional Matching with the Question Mark
+
+
 ### Chapter 8 - Input Validation
 
 ### Chapter 9 – Reading and Writing Files
