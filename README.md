@@ -497,3 +497,17 @@ Pillow is a third-party Python module for interacting with image files. The modu
 
 
 ### Chapter 20 – Controlling the Keyboard and Mouse with GUI Automation
+Some companies sell innovative (and pricey) “automation solutions,” usually marketed as robotic process automation (RPA). These products are effectively no different than the Python scripts you can make yourself with the pyautogui module, which has functions for simulating mouse movements, button clicks, and mouse wheel scrolls. This chapter covers only a subset of PyAutoGUI’s features; you can find the full documentation at [https://pyautogui.readthedocs.io/](https://pyautogui.readthedocs.io/)
+
+GUI automation scripts are a great way to automate the boring stuff, but your scripts can also be finicky. If a window is in the wrong place on a desktop or some pop-up appears unexpectedly, your script could be clicking on the wrong things on the screen. Here are some tips for setting up your GUI automation scripts:
+
+* Use the same screen resolution each time you run the script so that the position of windows doesn’t change.
+* The application window that your script clicks should be maximized so that its buttons and menus are in the same place each time you run the script.
+* Add generous pauses while waiting for content to load; you don’t want your script to begin clicking before the application is ready.
+* Use locateOnScreen() to find buttons and menus to click, rather than relying on XY coordinates. If your script can’t find the thing it needs to click, stop the program rather than let it continue blindly clicking.
+* Use getWindowsWithTitle() to ensure that the application window you think your script is clicking on exists, and use the activate() method to put that window in the foreground.
+* Use the logging module from Chapter 11 to keep a log file of what your script has done. This way, if you have to stop your script halfway through a process, you can change it to pick up from where it left off.
+* Add as many checks as you can to your script. Think about how it could fail if an unexpected pop-up window appears or if your computer loses its internet connection.
+* You may want to supervise the script when it first begins to ensure that it’s working correctly.
+
+You might also want to put a pause at the start of your script so the user can set up the window the script will click on.
