@@ -6,5 +6,5 @@ try:
         pyautogui.move(10, 0, 0.5)
         pyautogui.move(-10, 0, 0.5)
         time.sleep(10)
-except (KeyboardInterrupt, pyautogui.FailSafeException):
+except KeyboardInterrupt:
     print('Unidler deactivated.')
