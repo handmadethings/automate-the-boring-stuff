@@ -18,7 +18,7 @@
 ### Chapter 7 - Pattern Matching with Regular Expressions
 
 #### Finding Patterns of Text with Regular Expressions
-Regular expressions, called regexes for short, are descriptions for a pattern of text. For example, a \d in a regex stands for a digit character—that is, any single numeral from 0 to 9.
+Regular expressions are descriptions for a pattern of text. For example, a \d in a regex stands for a digit character—that is, any single numeral from 0 to 9.
 
 While there are several steps to using regular expressions in Python, each step is fairly simple.
 
