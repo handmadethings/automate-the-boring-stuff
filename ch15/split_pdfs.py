@@ -28,7 +28,7 @@ for page_num in range(len(pdf_reader.pages)):
     joined_file_path = p / new_file_name
     pdf_output = open(joined_file_path, 'wb')
     pdf_writer.write(pdf_output)
-    print(f'Saving joined file as {new_file_name}')
+    print(f'Saving file as {new_file_name}')
     pdf_output.close()
 
 print('Finished')
